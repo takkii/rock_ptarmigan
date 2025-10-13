@@ -79,4 +79,6 @@ x_reconstructed_nmf = np.dot(nmf.transform(X_test), nmf.components_)
 # nmf.py:1728: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
 # warnings.warn(
 
+# Maximum number of iterations 200 | max_iter = 200, GitHub disccussion on no problem.
+
 print(x_reconstructed_nmf)  # [[350.]]
