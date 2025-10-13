@@ -26,7 +26,6 @@ before_np = np.array(before_sh).reshape(-1, 1)
 
 X_train, X_test, Y_train, Y_test = train_test_split(after_np, before_np, train_size=0.8)
 
-# kmeans = KMeans(n_clusters=3, random_state=0)
 # kmeans = KMeans(
 #     copy_x=True,
 #     init='k-means++',
