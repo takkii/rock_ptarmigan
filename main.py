@@ -4,8 +4,13 @@ import numpy as np
 # from sklearn.cluster import KMeans
 # from sklearn.decomposition import PCA
 from sklearn.decomposition import NMF
+
+# from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
+# from sklearn.tree import DecisionTreeClassifier
+
+# train data
 after = cv2.imread('./images/Sample/after/face.gif')
 after_rgb = cv2.cvtColor(after, cv2.COLOR_RGB2BGR)
 # after_dt = after.dtype
@@ -17,6 +22,7 @@ after_rgb_np = np.array(after_rgb_sh).reshape(-1, 1)
 # [[262][350][3]]
 # [[262][350][3]]
 
+# test data
 before = cv2.imread('./images/Sample/before/face.gif')
 before_rgb = cv2.cvtColor(before, cv2.COLOR_RGB2BGR)
 # before_dt = before.dtype
@@ -28,7 +34,16 @@ before_rgb_np = np.array(before_rgb_sh).reshape(-1, 1)
 # [[262][350][3]]
 # [[262][350][3]]
 
-X_train, X_test, Y_train, Y_test = train_test_split(after_rgb_np, before_rgb_np, train_size=0.8)
+# train_test_split(*arrays, test_size=None, train_size=None, random_state=None, shuffle=True, stratify=None)
+X_train, X_test, Y_train, Y_test = train_test_split(after_rgb_np, before_rgb_np, test_size=0.3)
+
+# print('X_train')
+# print(X_train)
+# [[350]
+#  [262]]
+# print('X_test')
+# print(X_test)
+# [[3]]
 
 # kmeans = KMeans(
 #     copy_x=True,
@@ -76,12 +91,29 @@ nmf = NMF(
     shuffle=False,
 )
 
-nmf.fit(X_train)
-x_reconstructed_nmf = np.dot(nmf.transform(X_test), nmf.components_)
+# nmf.fit(X_train)
+study = nmf.fit_transform(X_train)
+# print(study)
+result = nmf.components_
+result_np = np.floor(result * 1000, dtype=float) / 1000
+print(float(result_np))  # Ans, 16.186 / 18.708 / 20.909
 
-# nmf.py:1728: ConvergenceWarning: Maximum number of iterations 200 reached. Increase it to improve convergence.
+
+# x_reconstructed_nmf = np.dot(nmf.transform(X_test), nmf.components_)
+
+# nmf.py:1728: ConvergenceWarning:
+# Maximum number of iterations 200 reached.
+# Increase it to improve convergence.
 # warnings.warn(
 
 # Maximum number of iterations 200 | max_iter = 200, GitHub disccussion on no problem.
 
-print(x_reconstructed_nmf)  # [[350.]] / [[3.]]
+# print('NMF')
+# print(x_reconstructed_nmf)  # [[350.]] / [[3.]]
+
+# DecisionTreeClassifier / accuracy_score
+# clf = DecisionTreeClassifier()
+# clf.fit(X_train, Y_train)
+# y_pred = clf.predict(X_test)
+# acc = accuracy_score(Y_test, y_pred)
+# print("Accuracy:", acc)  # Accuracy: 0.0
