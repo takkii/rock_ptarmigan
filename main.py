@@ -95,8 +95,9 @@ nmf = NMF(
 study = nmf.fit_transform(X_train)
 # print(study)
 result = nmf.components_
-result_np = np.floor(result * 1000, dtype=float) / 1000
-print(float(result_np))  # Ans, 16.186 / 18.708 / 20.909
+result_np = np.floor(result * 1000, dtype=np.float64) / 1000
+# DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+print(np.float64(result_np))  # Ans, 16.186 / 18.708 / 20.909
 
 
 # x_reconstructed_nmf = np.dot(nmf.transform(X_test), nmf.components_)
