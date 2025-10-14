@@ -7,24 +7,28 @@ from sklearn.decomposition import NMF
 from sklearn.model_selection import train_test_split
 
 after = cv2.imread('./images/Sample/after/face.gif')
-# after_rgb = cv2.cvtColor(after, cv2.COLOR_RGB2BGR)
+after_rgb = cv2.cvtColor(after, cv2.COLOR_RGB2BGR)
 # after_dt = after.dtype
-after_sh = after.shape  # (262, 350, 3)
-after_np = np.array(after_sh).reshape(-1, 1)
+# after_sh = after.shape  # (262, 350, 3)
+after_rgb_sh = after_rgb.shape  # (262, 350, 3)
+after_rgb_np = np.array(after_rgb_sh).reshape(-1, 1)
+# after_np = np.array(after_sh).reshape(-1, 1)
 # py
 # [[262][350][3]]
 # [[262][350][3]]
 
 before = cv2.imread('./images/Sample/before/face.gif')
-# before_rgb = cv2.cvtColor(before, cv2.COLOR_RGB2BGR)
+before_rgb = cv2.cvtColor(before, cv2.COLOR_RGB2BGR)
 # before_dt = before.dtype
-before_sh = before.shape  # (262, 350, 3)
-before_np = np.array(before_sh).reshape(-1, 1)
+# before_sh = before.shape  # (262, 350, 3)
+before_rgb_sh = before_rgb.shape  # (262, 350, 3)
+before_rgb_np = np.array(before_rgb_sh).reshape(-1, 1)
+# before_np = np.array(before_sh).reshape(-1, 1)
 # py
 # [[262][350][3]]
 # [[262][350][3]]
 
-X_train, X_test, Y_train, Y_test = train_test_split(after_np, before_np, train_size=0.8)
+X_train, X_test, Y_train, Y_test = train_test_split(after_rgb_np, before_rgb_np, train_size=0.8)
 
 # kmeans = KMeans(
 #     copy_x=True,
@@ -80,4 +84,4 @@ x_reconstructed_nmf = np.dot(nmf.transform(X_test), nmf.components_)
 
 # Maximum number of iterations 200 | max_iter = 200, GitHub disccussion on no problem.
 
-print(x_reconstructed_nmf)  # [[350.]]
+print(x_reconstructed_nmf)  # [[350.]] / [[3.]]
