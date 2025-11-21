@@ -7,7 +7,7 @@
 
 <div align="center">
   <p> This project name is rock_ptarmigan.</p>
-  <p><b> current status, Under verification. </b></p>
+  <p><b> Current status, Under verification. </b></p>
   <b> Copyright &copy 2025 Takayuki Kamiyama </b>
 </div>
 
