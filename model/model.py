@@ -215,21 +215,27 @@ features = feature_extractor(x)
 # x = tf.ones((1, 262, 350, 3))
 # features = feature_extractor(x)
 
-initial_model = keras.Sequential(
+model = keras.Sequential(
     [
         keras.Input(shape=after_rgb_sh),
-        layers.Conv2D(32, 5, strides=2, activation="relu"),
-        layers.Conv2D(32, 3, activation="relu", name="my_intermediate_layer"),
-        layers.Conv2D(32, 3, activation="relu"),
+        layers.Conv2D(32, 5, name='Layer_0', strides=2, activation="relu", trainable=False),
+        layers.Conv2D(32, 3, name='Layer_1', activation="relu", trainable=False),
+        layers.Conv2D(32, 3, name='Layer_2', activation="relu", trainable=False),
     ]
 )
+
+# model.get_layer('Layer_0').trainable = False
+# model.get_layer('Layer_1').trainable = False
+# model.get_layer('Layer_2').trainable = False
+
 feature_extractor = keras.Model(
-    inputs=initial_model.inputs,
-    outputs=initial_model.get_layer(name="my_intermediate_layer").output,
+    inputs=model.inputs,
+    outputs=model.get_layer(name="Layer_1").output,
 )
 # Call feature extractor on test input.
 x = tf.ones((1, 262, 350, 3))
 features = feature_extractor(x)
+
 # print('after_rgb :')
 # print(features)
 
@@ -320,6 +326,15 @@ features = feature_extractor(x)
 #     0.28995138]
 #    [0.68070894 0.         0.         ... 0.30171645 0.40353853
 #     0.28995138]]]], shape=(1, 127, 171, 32), dtype=float32)
+
+# print(features.shape)
+# (1, 127, 171, 32)
+
+# https://www.tensorflow.org/tutorials/images/transfer_learning?hl=ja
+global_average_layer = tf.keras.layers.GlobalAveragePooling2D()
+feature_batch_average = global_average_layer(features)
+print(feature_batch_average.shape)
+# (1, 32)
 
 # initial_model = keras.Sequential(
 #     [
