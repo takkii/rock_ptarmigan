@@ -20,11 +20,11 @@ after_rgb_sh = after_rgb.shape  # (262, 350, 3)
 # [[262][350][3]]
 # [[262][350][3]]
 
-before = cv2.imread('../images/Sample/before/face.gif')
-before_rgb = cv2.cvtColor(before, cv2.COLOR_RGB2BGR)
-# before_dt = before.dtype
-# before_sh = before.shape  # (262, 350, 3)
-before_rgb_sh = before_rgb.shape  # (262, 350, 3)
+# before = cv2.imread('../images/Sample/before/face.gif')
+# before_rgb = cv2.cvtColor(before, cv2.COLOR_RGB2BGR)
+# # before_dt = before.dtype
+# # before_sh = before.shape  # (262, 350, 3)
+# before_rgb_sh = before_rgb.shape  # (262, 350, 3)
 
 # https://www.tensorflow.org/guide/keras/sequential_model?hl=ja
 # model = keras.Sequential()
@@ -92,21 +92,21 @@ before_rgb_sh = before_rgb.shape  # (262, 350, 3)
 #  Trainable params: 48,672 (190.12 KB)
 #  Non-trainable params: 0 (0.00 B)
 
-initial_model = keras.Sequential(
-    [
-        keras.Input(shape=before_rgb.shape),
-        layers.Conv2D(32, 5, strides=2, activation="relu"),
-        layers.Conv2D(32, 3, activation="relu", name="my_intermediate_layer"),
-        layers.Conv2D(32, 3, activation="relu"),
-    ]
-)
-feature_extractor = keras.Model(
-    inputs=initial_model.inputs,
-    outputs=initial_model.get_layer(name="my_intermediate_layer").output,
-)
-# Call feature extractor on test input.
-x = tf.ones((1, 262, 350, 3))
-features = feature_extractor(x)
+# initial_model = keras.Sequential(
+#     [
+#         keras.Input(shape=before_rgb.shape),
+#         layers.Conv2D(32, 5, strides=2, activation="relu"),
+#         layers.Conv2D(32, 3, activation="relu", name="my_intermediate_layer"),
+#         layers.Conv2D(32, 3, activation="relu"),
+#     ]
+# )
+# feature_extractor = keras.Model(
+#     inputs=initial_model.inputs,
+#     outputs=initial_model.get_layer(name="my_intermediate_layer").output,
+# )
+# # Call feature extractor on test input.
+# x = tf.ones((1, 262, 350, 3))
+# features = feature_extractor(x)
 # print('before_rgb :')
 # print(features)
 
@@ -331,10 +331,31 @@ features = feature_extractor(x)
 # (1, 127, 171, 32)
 
 # https://www.tensorflow.org/tutorials/images/transfer_learning?hl=ja
+# inputs = tf.keras.Input(shape=(after_rgb_sh))
+# x = model(inputs)
+# preprocess_input = tf.keras.applications.mobilenet_v2.preprocess_input
+# x = preprocess_input(x)
 global_average_layer = tf.keras.layers.GlobalAveragePooling2D()
 feature_batch_average = global_average_layer(features)
-print(feature_batch_average.shape)
+# IMG_SIZE = feature_batch_average.shape
+# IMG_SHAPE = IMG_SIZE + (3,)
+# base_model = tf.keras.applications.MobileNetV2(input_shape=IMG_SHAPE,
+#                                                include_top=False,
+#                                                weights='imagenet')
+# x = base_model(x, training=False)
+# x = global_average_layer(x)
+# x = tf.keras.layers.Dropout(0.2)(x)
+# prediction_layer = tf.keras.layers.Dense(1)
+# outputs = prediction_layer(x)
+# models = tf.keras.Model(inputs, outputs)
+
+# print(feature_batch_average.shape)
 # (1, 32)
+print(len(feature_batch_average.shape))
+# 2
+
+# print(len(models.trainable_variables))
+# print(len(feature_extractor.trainable_variables))
 
 # initial_model = keras.Sequential(
 #     [
