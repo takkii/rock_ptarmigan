@@ -16,16 +16,17 @@
 
   ※  用途として、最小値と最大値をIF文などの条件式で設定し使用する。
 
-- PCAで割り出した値の調整を必要とするため、
-
-  ※  ライブラリ化をしたが、パッケージ化はしない方向性を持つ。
+- プロジェクト内で実行できるようにライブラリ化をした。
 
 ```python
+# 実行
 cd rock_ptamigan/lib
 
 python main.py
 ```
 
-> Approximate value : 0.52 in train folder.
-> 
-> Approximate value : 0.74 in validation folder.
+```markdown
+# 出力結果
+Approximate value : 0.15 in train folder.
+Approximate value : 0.12 in validation folder.
+```
