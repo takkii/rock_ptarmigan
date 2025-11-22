@@ -2,3 +2,7 @@ opencv-python
 python-dotenv
 scikit-learn
 tensorflow
+setuptools<81.0
+tqdm
+twine
+wheel
