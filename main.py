@@ -3,6 +3,7 @@ import os
 
 import cv2
 import numpy as np
+import numpy.typing as npt
 from keras.preprocessing.image import load_img, img_to_array
 from sklearn.decomposition import PCA
 
@@ -88,9 +89,9 @@ x_test = np.array(test_list)
 # print(x_reconstructed_means)  # [[262.]]
 
 pca = PCA(
-    n_components=None,
+    n_components=1,
     copy=True,
-    whiten=False,
+    whiten=True,
     svd_solver='auto',
     tol=0.0,
     iterated_power='auto',
@@ -103,12 +104,49 @@ x_train_shape = np.array(x_train).reshape(-1, 1)
 x_test_shape = np.array(x_test).reshape(-1, 1)
 
 pca.fit(x_train_shape)
-transform = pca.inverse_transform(pca.transform(x_test_shape))
-print(transform.shape)
-# (1376256, 1)
+pca.fit(x_test_shape)
+
+train_transform = pca.inverse_transform(pca.transform(x_train_shape))
+test_transform = pca.inverse_transform(pca.transform(x_test_shape))
+
+# print("PCA component shape: {}".format(pca.components_.shape))
+# PCA component shape: (1, 1)
+# print(train_transform.shape[0])
+# # 1650600 <class 'tuple'>
+# print(test_transform.shape[0])
+# 1376256 <class 'tuple'>
+
+# print(type(train_transform[0]))
+hyoka_0: npt.DTypeLike = np.floor(train_transform[0] * 1000).astype(int) / 1000
+hyoka_1: npt.DTypeLike = np.floor(train_transform[1] * 1000).astype(int) / 1000
+hyoka_2: npt.DTypeLike = np.floor(train_transform[2] * 1000).astype(int) / 1000
+hyoka_3: npt.DTypeLike = np.floor(train_transform[3] * 1000).astype(int) / 1000
+hyoka_4: npt.DTypeLike = np.floor(train_transform[4] * 1000).astype(int) / 1000
+hyoka_5: npt.DTypeLike = np.floor(train_transform[5] * 1000).astype(int) / 1000
+result = (hyoka_0 + hyoka_1 + hyoka_2 + hyoka_3 + hyoka_4 + hyoka_5) / 6
+
+print("Approximate: {:.2f}".format(np.float64(result)))
+# Approximate: 0.52
+# Approximate_value
+# myself_20 ~ 30 years old about.
+
+# print(test_transform[0])
+
+hyoka_test_0: npt.DTypeLike = np.floor(test_transform[0] * 1000).astype(int) / 1000
+hyoka_test_1: npt.DTypeLike = np.floor(test_transform[1] * 1000).astype(int) / 1000
+hyoka_test_2: npt.DTypeLike = np.floor(test_transform[2] * 1000).astype(int) / 1000
+hyoka_test_3: npt.DTypeLike = np.floor(test_transform[3] * 1000).astype(int) / 1000
+hyoka_test_4: npt.DTypeLike = np.floor(test_transform[4] * 1000).astype(int) / 1000
+hyoka_test_5: npt.DTypeLike = np.floor(test_transform[5] * 1000).astype(int) / 1000
+test_result = (hyoka_test_0 + hyoka_test_1 + hyoka_test_2 + hyoka_test_3 + hyoka_test_4 + hyoka_test_5) / 6
+
+print("Approximate: {:.2f}".format(np.float64(test_result)))
+# Approximate: 0.74
+# Approximate_value
+# myself_31 ~ 40 years old about.
 
 # print(len(transform.shape))
-# 2
+# 2 / "Length" or "Number of elements"
 
 # print(transform)
 # [[0.7137255 ]

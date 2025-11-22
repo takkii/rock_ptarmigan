@@ -647,7 +647,7 @@ x_train = np.array(train_list)
 #    [0.23137255 0.2627451  0.21960784]
 #    [0.21176471 0.23137255 0.21960784]]]]
 
-print(x_train.shape)
+# print(x_train.shape)
 # (6, 262, 350, 3)
 
 # print(x_validation.shape)
@@ -679,5 +679,5 @@ features = feature_extractor(x)
 global_average_layer = tf.keras.layers.GlobalAveragePooling2D()
 feature_batch_average = global_average_layer(features)
 
-print(len(feature_batch_average.shape))
-# 2
+print(feature_batch_average.shape[1])
+# 32
