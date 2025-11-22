@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rock_ptarmigan"
+version = "1.0.0"
+authors = [{ name="Takayuki Kamiyama", email="karuma.reason@gmail.com" }]
+description = "Many to Many, Face Recognition Console Application."
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+classifiers = [
+     "Programming Language :: Python :: 3.13",
+]
+dependencies = ['opencv-python', 'python-dotenv', 'scikit-learn', 'tensorflow' , 'opencv-python']
+
+[project.scripts]
+facecompare = 'rock_ptarmigan.main:main'
+
+[tool.setuptools.dynamic]
+version = {attr = "rock_ptarmigan.__version__"}
