@@ -1,11 +1,11 @@
 import glob
 import os
 import warnings
+from os.path import dirname, join
 
 import cv2
 import numpy as np
 import numpy.typing as npt
-from os.path import dirname, join
 from dotenv import load_dotenv
 from keras.preprocessing.image import load_img, img_to_array
 from sklearn.decomposition import PCA
@@ -74,24 +74,30 @@ pca.fit(x_test_shape)
 train_transform = pca.inverse_transform(pca.transform(x_train_shape))
 test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-hyoka_0: npt.DTypeLike = np.floor(train_transform[0] * 1000).astype(int) / 1000
-hyoka_1: npt.DTypeLike = np.floor(train_transform[1] * 1000).astype(int) / 1000
-hyoka_2: npt.DTypeLike = np.floor(train_transform[2] * 1000).astype(int) / 1000
-hyoka_3: npt.DTypeLike = np.floor(train_transform[3] * 1000).astype(int) / 1000
-hyoka_4: npt.DTypeLike = np.floor(train_transform[4] * 1000).astype(int) / 1000
-hyoka_5: npt.DTypeLike = np.floor(train_transform[5] * 1000).astype(int) / 1000
-result = (hyoka_0 + hyoka_1 + hyoka_2 + hyoka_3 + hyoka_4 + hyoka_5) / 6
+hyoka = (
+        train_transform[0] +
+        train_transform[1] +
+        train_transform[2] +
+        train_transform[3] +
+        train_transform[4] +
+        train_transform[5]
+)
+
+result: npt.DTypeLike = np.floor(hyoka * 1000).astype(int) / 6000
 
 print("Approximate value : {:.2f}".format(np.float64(result)) + " in " + train_dir + " folder.")
 # Approximate value : 0.52 in train folder.
 
-hyoka_test_0: npt.DTypeLike = np.floor(test_transform[0] * 1000).astype(int) / 1000
-hyoka_test_1: npt.DTypeLike = np.floor(test_transform[1] * 1000).astype(int) / 1000
-hyoka_test_2: npt.DTypeLike = np.floor(test_transform[2] * 1000).astype(int) / 1000
-hyoka_test_3: npt.DTypeLike = np.floor(test_transform[3] * 1000).astype(int) / 1000
-hyoka_test_4: npt.DTypeLike = np.floor(test_transform[4] * 1000).astype(int) / 1000
-hyoka_test_5: npt.DTypeLike = np.floor(test_transform[5] * 1000).astype(int) / 1000
-test_result = (hyoka_test_0 + hyoka_test_1 + hyoka_test_2 + hyoka_test_3 + hyoka_test_4 + hyoka_test_5) / 6
+hyoka_test = (
+        test_transform[0] +
+        test_transform[1] +
+        test_transform[2] +
+        test_transform[3] +
+        test_transform[4] +
+        test_transform[5]
+)
+
+test_result: npt.DTypeLike = np.floor(hyoka_test * 1000).astype(int) / 6000
 
 print("Approximate value : {:.2f}".format(np.float64(test_result)) + " in " + test_dir + " folder.")
 # Approximate value : 0.74 in validation folder.
