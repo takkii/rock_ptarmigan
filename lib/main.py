@@ -74,30 +74,12 @@ pca.fit(x_test_shape)
 train_transform = pca.inverse_transform(pca.transform(x_train_shape))
 test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-hyoka = (
-        train_transform[0] +
-        train_transform[1] +
-        train_transform[2] +
-        train_transform[3] +
-        train_transform[4] +
-        train_transform[5]
-)
-
-result: npt.DTypeLike = np.floor(hyoka * 1000).astype(int) / 6000
+result: npt.DTypeLike = np.floor(sum(train_transform) / 1000).astype(int) / 6000
 
 print("Approximate value : {:.2f}".format(np.float64(result)) + " in " + train_dir + " folder.")
-# Approximate value : 0.52 in train folder.
+# Approximate value : 0.15 in train folder.
 
-hyoka_test = (
-        test_transform[0] +
-        test_transform[1] +
-        test_transform[2] +
-        test_transform[3] +
-        test_transform[4] +
-        test_transform[5]
-)
-
-test_result: npt.DTypeLike = np.floor(hyoka_test * 1000).astype(int) / 6000
+test_result: npt.DTypeLike = np.floor(sum(test_transform) / 1000).astype(int) / 6000
 
 print("Approximate value : {:.2f}".format(np.float64(test_result)) + " in " + test_dir + " folder.")
-# Approximate value : 0.74 in validation folder.
+# Approximate value : 0.12 in validation folder.
