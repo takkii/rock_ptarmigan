@@ -27,4 +27,5 @@ python main.py
 ```
 
 > Approximate value : 0.52 in train folder.
+> 
 > Approximate value : 0.74 in validation folder.
