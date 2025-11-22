@@ -28,5 +28,5 @@ python main.py
 ```markdown
 # 出力結果
 Approximate value : 0.15 in train folder.
-Approximate value : 0.12 in validation folder.
+Approximate value : 0.11 in validation folder.
 ```
