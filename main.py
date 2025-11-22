@@ -124,13 +124,22 @@ hyoka_3: npt.DTypeLike = np.floor(train_transform[3] * 1000).astype(int) / 1000
 hyoka_4: npt.DTypeLike = np.floor(train_transform[4] * 1000).astype(int) / 1000
 hyoka_5: npt.DTypeLike = np.floor(train_transform[5] * 1000).astype(int) / 1000
 result = (hyoka_0 + hyoka_1 + hyoka_2 + hyoka_3 + hyoka_4 + hyoka_5) / 6
-
+# print(train_transform[0])
+# print(train_transform[1])
+# print(train_transform[2])
+# print(train_transform[3])
+# print(train_transform[4])
+# print(train_transform[5])
+# [0.5529412]
+# [0.57254905]
+# [0.53333336]
+# [0.49019608]
+# [0.50980395]
+# [0.48235294]
 print("Approximate: {:.2f}".format(np.float64(result)))
 # Approximate: 0.52
 # Approximate_value
 # myself_20 ~ 30 years old about.
-
-# print(test_transform[0])
 
 hyoka_test_0: npt.DTypeLike = np.floor(test_transform[0] * 1000).astype(int) / 1000
 hyoka_test_1: npt.DTypeLike = np.floor(test_transform[1] * 1000).astype(int) / 1000
@@ -139,7 +148,18 @@ hyoka_test_3: npt.DTypeLike = np.floor(test_transform[3] * 1000).astype(int) / 1
 hyoka_test_4: npt.DTypeLike = np.floor(test_transform[4] * 1000).astype(int) / 1000
 hyoka_test_5: npt.DTypeLike = np.floor(test_transform[5] * 1000).astype(int) / 1000
 test_result = (hyoka_test_0 + hyoka_test_1 + hyoka_test_2 + hyoka_test_3 + hyoka_test_4 + hyoka_test_5) / 6
-
+# print(test_transform[0])
+# print(test_transform[1])
+# print(test_transform[2])
+# print(test_transform[3])
+# print(test_transform[4])
+# print(test_transform[5])
+# [0.7137255]
+# [0.69803923]
+# [0.6745098]
+# [0.78431374]
+# [0.78431374]
+# [0.7764706]
 print("Approximate: {:.2f}".format(np.float64(test_result)))
 # Approximate: 0.74
 # Approximate_value
