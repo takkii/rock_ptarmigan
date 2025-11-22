@@ -1,4 +1,4 @@
-### データ加工歴
+### 前処理とデータ加工の履歴
 
 - 機械学習ライブラリから、独自顔写真を分析対象にした。
 
@@ -15,3 +15,17 @@
 - 多対多の顔認識、主成分分析を用いて近似値評価のための中央値を計算で導いた。
 
   ※  用途として、最小値と最大値をIF文などの条件式で設定し使用する。
+
+- 繰り返しを避けるため、for文とrangeを利用した。
+
+  ※  ライブラリ化をした。パッケージ化は進行しない。
+
+```python
+cd rock_ptamigan/lib
+
+python main.py
+```
+
+> Approximate value : 0.48 in train folder.
+
+> Approximate value : 0.78 in validation folder.

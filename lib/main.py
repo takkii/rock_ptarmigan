@@ -1,0 +1,106 @@
+import glob
+import os
+import warnings
+
+import cv2
+import numpy as np
+import numpy.typing as npt
+from os.path import dirname, join
+from dotenv import load_dotenv
+from keras.preprocessing.image import load_img, img_to_array
+from sklearn.decomposition import PCA
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+warnings.simplefilter('ignore', DeprecationWarning)
+
+load_dotenv(verbose=True)
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+AFC = os.environ.get("after_cv2")
+IMP = os.environ.get("images_path")
+REP = os.environ.get("repeat_yourself") or ""
+IMF = os.environ.get("images_file")
+TRF = os.environ.get("train_folder")
+VAF = os.environ.get("validation_folder")
+
+after = cv2.imread(str(AFC))
+after_rgb = cv2.cvtColor(after, cv2.COLOR_RGB2BGR)
+after_rgb_sh = after_rgb.shape  # (262, 350, 3)
+
+train_dir = str(TRF)
+test_dir = str(VAF)
+file_type = str(IMF)
+
+train_list_path = glob.glob(str(IMP) + train_dir + '/*.' + file_type)
+test_list_path = glob.glob(str(IMP) + test_dir + '/*.' + file_type)
+
+train_list = []
+test_list = []
+train_shape = after_rgb_sh
+test_shape = (256, 256, 3)
+
+for img in train_list_path:
+    temp_img = load_img(img, target_size=train_shape)
+    temp_img_array = img_to_array(temp_img) / 255
+    train_list.append(temp_img_array)
+
+for img in test_list_path:
+    temp_img = load_img(img, target_size=test_shape)
+    temp_img_array = img_to_array(temp_img) / 255
+    test_list.append(temp_img_array)
+
+x_train = np.array(train_list)
+x_test = np.array(test_list)
+
+pca = PCA(
+    n_components=1,
+    copy=True,
+    whiten=True,
+    svd_solver='auto',
+    tol=0.0,
+    iterated_power='auto',
+    n_oversamples=10,
+    power_iteration_normalizer='auto',
+    random_state=0,
+)
+
+x_train_shape = np.array(x_train).reshape(-1, 1)
+x_test_shape = np.array(x_test).reshape(-1, 1)
+
+pca.fit(x_train_shape)
+pca.fit(x_test_shape)
+
+train_transform = pca.inverse_transform(pca.transform(x_train_shape))
+test_transform = pca.inverse_transform(pca.transform(x_test_shape))
+
+repeat = int(REP)
+
+for i in range(repeat):
+    hyoka: npt.DTypeLike = float(0.0)
+    hyoka += (np.floor(train_transform[i] * 1000).astype(int) / 1000 * (i+1)) / 6
+    # print(hyoka)
+    # [0.092]
+    # [0.19066667]
+    # [0.2665]
+    # [0.32666667]
+    # [0.42416667]
+    # [0.482]
+
+print("Approximate value : {:.2f}".format(np.float64(hyoka)) + " in " + train_dir + " folder.")
+# Approximate value : 0.48 in train folder.
+
+for i in range(repeat):
+    hyoka_test: npt.DTypeLike = float(0.0)
+    hyoka_test += (np.floor(test_transform[i] * 1000).astype(int) / 1000 * (i+1)) / 6
+    # print(hyoka_test)
+    # [0.11883333]
+    # [0.23266667]
+    # [0.337]
+    # [0.52266667]
+    # [0.65333333]
+    # [0.776]
+
+print("Approximate value : {:.2f}".format(np.float64(hyoka_test)) + " in " + test_dir + " folder.")
+# Approximate value : 0.78 in validation folder.

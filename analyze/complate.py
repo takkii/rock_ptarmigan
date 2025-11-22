@@ -9,7 +9,7 @@ from sklearn.decomposition import PCA
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-after = cv2.imread('./images/Sample/after/face.gif')
+after = cv2.imread('../images/Sample/after/face.gif')
 after_rgb = cv2.cvtColor(after, cv2.COLOR_RGB2BGR)
 after_rgb_sh = after_rgb.shape  # (262, 350, 3)
 
