@@ -61,32 +61,33 @@ pca.fit(x_test_shape)
 train_transform = pca.inverse_transform(pca.transform(x_train_shape))
 test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-repeat = 6
+hyoka = (
+    train_transform[0] +
+    train_transform[1] +
+    train_transform[2] +
+    train_transform[3] +
+    train_transform[4] +
+    train_transform[5]
+)
 
-for i in range(repeat):
-    hyoka: npt.DTypeLike = float(0.0)
-    hyoka += (np.floor(train_transform[i] * 1000).astype(int) / 1000 * (i+1)) / 6
-    # print(hyoka)
-    # [0.092]
-    # [0.19066667]
-    # [0.2665]
-    # [0.32666667]
-    # [0.42416667]
-    # [0.482]
+count_file_train = (sum(os.path.isfile(os.path.join('../images/train/', name)) for name in os.listdir('../images/train/')))
+count_file_validation = (sum(os.path.isfile(os.path.join('../images/validation/', name)) for name in os.listdir('../images/validation/')))
+
+hyoka: npt.DTypeLike = np.floor(hyoka * 1000).astype(int) / (1000 * count_file_train)
+# Approximate value : 0.52 in train folder.
 
 print("Approximate value : {:.2f}".format(np.float64(hyoka)) + " in " + train_dir + " folder.")
-# Approximate value : 0.48 in train folder.
 
-for i in range(repeat):
-    hyoka_test: npt.DTypeLike = float(0.0)
-    hyoka_test += (np.floor(test_transform[i] * 1000).astype(int) / 1000 * (i+1)) / 6
-    # print(hyoka_test)
-    # [0.11883333]
-    # [0.23266667]
-    # [0.337]
-    # [0.52266667]
-    # [0.65333333]
-    # [0.776]
+hyoka_test = (
+    test_transform[0] +
+    test_transform[1] +
+    test_transform[2] +
+    test_transform[3] +
+    test_transform[4] +
+    test_transform[5]
+)
+
+hyoka_test: npt.DTypeLike = np.floor(hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
 
 print("Approximate value : {:.2f}".format(np.float64(hyoka_test)) + " in " + test_dir + " folder.")
-# Approximate value : 0.78 in validation folder.
+# Approximate value : 0.63 in validation folder.
