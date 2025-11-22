@@ -74,12 +74,15 @@ pca.fit(x_test_shape)
 train_transform = pca.inverse_transform(pca.transform(x_train_shape))
 test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-result: npt.DTypeLike = np.floor(sum(train_transform) / 1000).astype(int) / 6000
+count_file_train = (sum(os.path.isfile(os.path.join(IMP + TRF, name)) for name in os.listdir(IMP + TRF)))
+count_file_validation = (sum(os.path.isfile(os.path.join(IMP + VAF, name)) for name in os.listdir(IMP +VAF)))
+
+result: npt.DTypeLike = np.floor(sum(train_transform) / 1000).astype(int) / (1000 * count_file_train)
 
 print("Approximate value : {:.2f}".format(np.float64(result)) + " in " + train_dir + " folder.")
 # Approximate value : 0.15 in train folder.
 
-test_result: npt.DTypeLike = np.floor(sum(test_transform) / 1000).astype(int) / 6000
+test_result: npt.DTypeLike = np.floor(sum(test_transform) / 1000).astype(int) / (1000 * count_file_validation)
 
 print("Approximate value : {:.2f}".format(np.float64(test_result)) + " in " + test_dir + " folder.")
-# Approximate value : 0.12 in validation folder.
+# Approximate value : 0.11 in validation folder.
