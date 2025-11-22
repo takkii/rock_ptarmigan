@@ -13,7 +13,7 @@ class Face(threading.Thread):
 
     # run method
     def run(self):
-        # value is 0.6 and lower numbers make face comparisons more strict:
+        # Approximate value evaluation.
         rock.compare_after()
 
 
