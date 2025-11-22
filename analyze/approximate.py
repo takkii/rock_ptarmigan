@@ -62,16 +62,18 @@ train_transform = pca.inverse_transform(pca.transform(x_train_shape))
 test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
 hyoka = (
-    train_transform[0] +
-    train_transform[1] +
-    train_transform[2] +
-    train_transform[3] +
-    train_transform[4] +
-    train_transform[5]
+        train_transform[0] +
+        train_transform[1] +
+        train_transform[2] +
+        train_transform[3] +
+        train_transform[4] +
+        train_transform[5]
 )
 
-count_file_train = (sum(os.path.isfile(os.path.join('../images/train/', name)) for name in os.listdir('../images/train/')))
-count_file_validation = (sum(os.path.isfile(os.path.join('../images/validation/', name)) for name in os.listdir('../images/validation/')))
+count_file_train = (
+    sum(os.path.isfile(os.path.join('../images/train/', name)) for name in os.listdir('../images/train/')))
+count_file_validation = (
+    sum(os.path.isfile(os.path.join('../images/validation/', name)) for name in os.listdir('../images/validation/')))
 
 hyoka: npt.DTypeLike = np.floor(hyoka * 1000).astype(int) / (1000 * count_file_train)
 # Approximate value : 0.52 in train folder.
@@ -79,15 +81,16 @@ hyoka: npt.DTypeLike = np.floor(hyoka * 1000).astype(int) / (1000 * count_file_t
 print("Approximate value : {:.2f}".format(np.float64(hyoka)) + " in " + train_dir + " folder.")
 
 hyoka_test = (
-    test_transform[0] +
-    test_transform[1] +
-    test_transform[2] +
-    test_transform[3] +
-    test_transform[4] +
-    test_transform[5]
+        test_transform[0] +
+        test_transform[1] +
+        test_transform[2] +
+        test_transform[3] +
+        test_transform[4] +
+        test_transform[5] +
+        test_transform[6]
 )
 
 hyoka_test: npt.DTypeLike = np.floor(hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
 
 print("Approximate value : {:.2f}".format(np.float64(hyoka_test)) + " in " + test_dir + " folder.")
-# Approximate value : 0.63 in validation folder.
+# Approximate value : 0.76 in validation folder.
