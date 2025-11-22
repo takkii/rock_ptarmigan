@@ -18,8 +18,8 @@
 
 - プロジェクト内で実行できるようにライブラリ化をした。
 
-```python
-# 実行
+```markdown
+# ファイルを実行
 cd rock_ptamigan/lib
 
 python main.py
