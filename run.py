@@ -13,6 +13,8 @@ class Face(threading.Thread):
 
     # run method
     def run(self):
+        # rock_ptarmigan version.
+        print("rock_ptarmigan_version: " + rock.__version__)
         # Approximate value evaluation.
         rock.compare_after()
 
