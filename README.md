@@ -6,9 +6,9 @@
 <br />
 
 <div align="center">
-  <p> This project name is rock_ptarmigan.</p>
+  <p><b> This project name is <a href="https://github.com/takkii/rock_ptarmigan/tree/main/wiki">rock_ptarmigan.</a></b></p>
   <p><b> Current status, production environment. </b></p>
-  <b> Copyright &copy 2025 Takayuki Kamiyama </b>
+  <p><b> Copyright &copy 2025 Takayuki Kamiyama </b></p>
 </div>
 
 
