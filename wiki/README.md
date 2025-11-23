@@ -28,3 +28,5 @@ python run.py
 Approximate value : 0.15 in train folder.
 Approximate value : 0.11 in validation folder.
 ```
+
+![フォルダの設定例](../images/manual.gif)
