@@ -15,8 +15,12 @@ class Face(threading.Thread):
     def run(self):
         # rock_ptarmigan version.
         print("rock_ptarmigan_version: " + rock.__version__)
-        # Approximate value evaluation.
-        rock.compare_after()
+        # Approximate value evaluation to all
+        rock.compare_all()
+        # Approximate value evaluation to train data.
+        rock.compare_train()
+        # Approximate valute evaluation to test data.
+        rock.compare_validation()
 
 
 # try ~ except ~ finally.

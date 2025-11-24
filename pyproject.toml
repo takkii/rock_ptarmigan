@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rock_ptarmigan"
-version = "1.0.1.1"
+version = "1.0.2"
 authors = [{ name="Takayuki Kamiyama", email="karuma.reason@gmail.com" }]
-description = "Many to Many, Face Recognition Console Application."
+description = "Approximate value evaluation."
 readme = "README.md"
 license = {file = "LICENSE.txt"}
 classifiers = [
