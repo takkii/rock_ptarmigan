@@ -21,14 +21,17 @@
 - トレーニングデータ、テストデータをまとめと個別に出力するようにした。
 
 ```markdown
-# 近似値評価を実行
+# 近似値評価を実行する
 python run.py
 ```
 
 ```markdown
-# 出力結果
+# 現在のバージョン、出力結果
+rock_ptarmigan version: 1.0.2
 Approximate value : 0.15 in train folder.
 Approximate value : 0.11 in validation folder.
+0.15
+0.11
 ```
 
 ![フォルダの設定例](../images/manual.gif)
