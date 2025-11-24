@@ -131,7 +131,7 @@ def compare_train():
 
     result: npt.DTypeLike = np.floor(sum(train_transform) / 1000).astype(int) / (1000 * count_file_train)
 
-    print("{:.2f}".format(np.float64(result)))
+    print("{:.2f}".format(np.float64(result)))  # 0.15
 
 
 def compare_validation():
@@ -172,4 +172,4 @@ def compare_validation():
 
     test_result: npt.DTypeLike = np.floor(sum(test_transform) / 1000).astype(int) / (1000 * count_file_validation)
 
-    print("{:.2f}".format(np.float64(test_result)))
+    print("{:.2f}".format(np.float64(test_result)))  # 0.11
