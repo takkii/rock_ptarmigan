@@ -4,7 +4,7 @@
 
 ② 近似値評価を検証していた途中経過のコード片。
 
-> approximate.py
+> if_approximate.py
 
 ③ 近似値評価(float型)をif文で条件分岐。
 
