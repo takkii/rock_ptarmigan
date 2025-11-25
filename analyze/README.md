@@ -1,4 +1,4 @@
-#### 説明
+#### 各ファイルの説明
 
 > approximate.py
 
@@ -6,7 +6,7 @@
 
 > if_approximate.py
 
-③ 近似値評価(float型)をif文で条件分岐。
+③ 近似値評価(float型)をif文で条件分岐、用途で条件を追加する。
 
 > complete.py
 
