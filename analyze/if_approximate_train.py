@@ -24,7 +24,7 @@ AFC = os.environ.get("if_after_cv2")
 IMP = os.environ.get("if_images_path")
 IMF = os.environ.get("images_file")
 TRF = os.environ.get("train_folder")
-NUM = os.environ.get("num_approximate")
+NAT = os.environ.get("num_approximat_train")
 
 
 # face class
@@ -79,13 +79,16 @@ class iFace(threading.Thread):
 
         num_result = np.float64(result)
 
-        print('Check, train data < ' + NUM)
+        print('Check, train data < ' + NAT)
 
         if num_result < float(NUM):
-            print('train data pass')
+            print("train data is {:.2f}".format(np.float64(result)))
             pass
         else:
-            print("train data is {:.2f}".format(np.float64(result)))  # 0.15016666666666667
+            print("train data is {}".format(np.float64(result)))
+        # Check, train
+        # data < 0.149
+        # train data is 0.15016666666666667
 
 
 # try ~ except ~ finally.
