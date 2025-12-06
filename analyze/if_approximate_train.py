@@ -24,7 +24,7 @@ AFC = os.environ.get("if_after_cv2")
 IMP = os.environ.get("if_images_path")
 IMF = os.environ.get("images_file")
 TRF = os.environ.get("train_folder")
-NAT = os.environ.get("num_approximat_train")
+NAT = os.environ.get("num_approximate_train")
 
 
 # face class
@@ -78,10 +78,11 @@ class iFace(threading.Thread):
         result: npt.DTypeLike = np.floor(sum(train_transform) / 1000).astype(int) / (1000 * count_file_train)
 
         num_result = np.float64(result)
+        nat_str = str(NAT)
 
-        print('Check, train data < ' + NAT)
+        print('Check, train data < ' + nat_str)
 
-        if num_result < float(NUM):
+        if num_result < float(nat_str):
             print("train data is {:.2f}".format(np.float64(result)))
             pass
         else:
