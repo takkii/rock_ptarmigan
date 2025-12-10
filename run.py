@@ -19,7 +19,7 @@ class Face(threading.Thread):
         rock.compare_all()
         # Approximate value evaluation to train data.
         rock.compare_train()
-        # Approximate valute evaluation to test data.
+        # Approximate value evaluation to test data.
         rock.compare_validation()
 
 
