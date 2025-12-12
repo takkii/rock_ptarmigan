@@ -17,8 +17,8 @@ train_dir = 'train'
 test_dir = 'validation'
 file_type = 'gif'
 
-train_list_path = glob.glob('./images/' + train_dir + '/*.' + file_type)
-test_list_path = glob.glob('./images/' + test_dir + '/*.' + file_type)
+train_list_path = glob.glob('../images/' + train_dir + '/*.' + file_type)
+test_list_path = glob.glob('../images/' + test_dir + '/*.' + file_type)
 
 train_list = []
 test_list = []
@@ -141,13 +141,20 @@ print("Approximate: {:.2f}".format(np.float64(result)))
 # Approximate_value
 # myself_20 ~ 30 years old about.
 
-hyoka_test_0: npt.DTypeLike = np.floor(test_transform[0] * 1000).astype(int) / 1000
-hyoka_test_1: npt.DTypeLike = np.floor(test_transform[1] * 1000).astype(int) / 1000
-hyoka_test_2: npt.DTypeLike = np.floor(test_transform[2] * 1000).astype(int) / 1000
-hyoka_test_3: npt.DTypeLike = np.floor(test_transform[3] * 1000).astype(int) / 1000
-hyoka_test_4: npt.DTypeLike = np.floor(test_transform[4] * 1000).astype(int) / 1000
-hyoka_test_5: npt.DTypeLike = np.floor(test_transform[5] * 1000).astype(int) / 1000
-test_result = (hyoka_test_0 + hyoka_test_1 + hyoka_test_2 + hyoka_test_3 + hyoka_test_4 + hyoka_test_5) / 6
+hyoka_test_0: npt.DTypeLike = np.floor(
+    test_transform[0] * 1000).astype(int) / 1000
+hyoka_test_1: npt.DTypeLike = np.floor(
+    test_transform[1] * 1000).astype(int) / 1000
+hyoka_test_2: npt.DTypeLike = np.floor(
+    test_transform[2] * 1000).astype(int) / 1000
+hyoka_test_3: npt.DTypeLike = np.floor(
+    test_transform[3] * 1000).astype(int) / 1000
+hyoka_test_4: npt.DTypeLike = np.floor(
+    test_transform[4] * 1000).astype(int) / 1000
+hyoka_test_5: npt.DTypeLike = np.floor(
+    test_transform[5] * 1000).astype(int) / 1000
+test_result = (hyoka_test_0 + hyoka_test_1 + hyoka_test_2 + hyoka_test_3 +
+               hyoka_test_4 + hyoka_test_5) / 6
 # print(test_transform[0])
 # print(test_transform[1])
 # print(test_transform[2])
@@ -199,7 +206,6 @@ print("Approximate: {:.2f}".format(np.float64(test_result)))
 # result_np = np.floor(result * 1000, dtype=np.float64) / 1000
 # # DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
 # print(np.float64(result_np))  # Ans, 16.186 / 18.708 / 20.909
-
 
 # x_reconstructed_nmf = np.dot(nmf.transform(X_test), nmf.components_)
 
