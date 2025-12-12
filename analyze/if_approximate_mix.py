@@ -20,10 +20,10 @@ load_dotenv(verbose=True)
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-AFC = os.environ.get("after_cv2")
-# AFC = os.environ.get("if_after_cv2")
-IMP = os.environ.get("images_path")
-# IMP = os.environ.get("if_images_path")
+# AFC = os.environ.get("after_cv2")
+AFC = os.environ.get("if_after_cv2")
+# IMP = os.environ.get("images_path")
+IMP = os.environ.get("if_images_path")
 IMF = os.environ.get("images_file")
 TRF = os.environ.get("train_folder")
 VAF = os.environ.get("validation_folder")
@@ -90,11 +90,19 @@ class iFace(threading.Thread):
         train_transform = pca.inverse_transform(pca.transform(x_train_shape))
         test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-        count_file_train = (sum(os.path.isfile(os.path.join(IMP + TRF, name)) for name in os.listdir(IMP + TRF)))
-        count_file_validation = (sum(os.path.isfile(os.path.join(IMP + VAF, name)) for name in os.listdir(IMP + VAF)))
+        count_file_train = (sum(
+            os.path.isfile(os.path.join(IMP + TRF, name))
+            for name in os.listdir(IMP + TRF)))
+        count_file_validation = (sum(
+            os.path.isfile(os.path.join(IMP + VAF, name))
+            for name in os.listdir(IMP + VAF)))
 
-        result: npt.DTypeLike = np.floor(sum(train_transform) / 1000).astype(int) / (1000 * count_file_train)
-        test_result: npt.DTypeLike = np.floor(sum(test_transform) / 1000).astype(int) / (1000 * count_file_validation)
+        result: npt.DTypeLike = np.floor(
+            sum(train_transform) / 1000).astype(int) / (1000 *
+                                                        count_file_train)
+        test_result: npt.DTypeLike = np.floor(
+            sum(test_transform) / 1000).astype(int) / (1000 *
+                                                       count_file_validation)
 
         num_result = np.float64(result)
         num_test_result = np.float64(test_result)
