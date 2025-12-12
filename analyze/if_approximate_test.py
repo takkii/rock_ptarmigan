@@ -68,9 +68,13 @@ class iFace(threading.Thread):
 
         test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-        count_file_validation = (sum(os.path.isfile(os.path.join(IMP + VAF, name)) for name in os.listdir(IMP + VAF)))
+        count_file_validation = (sum(
+            os.path.isfile(os.path.join(IMP + VAF, name))
+            for name in os.listdir(IMP + VAF)))
 
-        test_result: npt.DTypeLike = np.floor(sum(test_transform) / 1000).astype(int) / (1000 * count_file_validation)
+        test_result: npt.DTypeLike = np.floor(
+            sum(test_transform) / 1000).astype(int) / (1000 *
+                                                       count_file_validation)
 
         num_result = np.float64(test_result)
 
