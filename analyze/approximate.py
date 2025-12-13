@@ -5,13 +5,24 @@ import warnings
 import cv2
 import numpy as np
 import numpy.typing as npt
+
+from dotenv import load_dotenv
 from keras.preprocessing.image import load_img, img_to_array
+from os.path import dirname, join
 from sklearn.decomposition import PCA
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 warnings.simplefilter('ignore', DeprecationWarning)
 
-after = cv2.imread('../images/Sample/after/face.gif')
+load_dotenv(verbose=True)
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
+
+AFC = os.environ.get("if_after_cv2")
+IMP = os.environ.get("if_images_path")
+
+after = cv2.imread(str(AFC))
 after_rgb = cv2.cvtColor(after, cv2.COLOR_RGB2BGR)
 after_rgb_sh = after_rgb.shape  # (262, 350, 3)
 
@@ -19,8 +30,8 @@ train_dir = 'train'
 test_dir = 'validation'
 file_type = 'gif'
 
-train_list_path = glob.glob('../images/' + train_dir + '/*.' + file_type)
-test_list_path = glob.glob('../images/' + test_dir + '/*.' + file_type)
+train_list_path = glob.glob(str(IMP) + train_dir + '/*.' + file_type)
+test_list_path = glob.glob(str(IMP) + test_dir + '/*.' + file_type)
 
 train_list = []
 test_list = []
