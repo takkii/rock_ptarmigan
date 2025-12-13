@@ -1,9 +1,9 @@
 #### 近似値評価
 
 ```markdown
-# approximate.py
+# numeric_calc
 
-② 近似値評価、説明文を出力先に追記した拡張版。
+② hyoka、hyoka_testの計算式を用いた出力。
 
 # if_approximate_mix.py
 

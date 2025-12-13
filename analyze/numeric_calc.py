@@ -72,9 +72,6 @@ pca.fit(x_test_shape)
 train_transform = pca.inverse_transform(pca.transform(x_train_shape))
 test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-hyoka = (train_transform[0] + train_transform[1] + train_transform[2] +
-         train_transform[3] + train_transform[4] + train_transform[5])
-
 count_file_train = (sum(
     os.path.isfile(os.path.join('../images/train/', name))
     for name in os.listdir('../images/train/')))
@@ -82,20 +79,50 @@ count_file_validation = (sum(
     os.path.isfile(os.path.join('../images/validation/', name))
     for name in os.listdir('../images/validation/')))
 
-hyoka: npt.DTypeLike = np.floor(
+print('--------------------------------------------------------------')
+
+hyoka = (train_transform[:count_file_validation])
+
+hyoka_calc: npt.DTypeLike = np.floor(
     hyoka * 1000).astype(int) / (1000 * count_file_train)
-# Approximate value : 0.52 in train folder.
 
-print("Approximate value : {:.2f}".format(np.float64(hyoka)) + " in " +
-      train_dir + " folder.")
+print('hyokaの計算')
 
-hyoka_test = (test_transform[0] + test_transform[1] + test_transform[2] +
-              test_transform[3] + test_transform[4] + test_transform[5] +
-              test_transform[6])
+print("平均値: {:.2f}".format(np.mean(hyoka_calc)))
+print("中央値: {:.2f}".format(np.median(hyoka_calc)))
+print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))
+print("最小値: {:.2f}".format(np.min(hyoka_calc)))
+print("最大値: {:.2f}".format(np.max(hyoka_calc)))
 
-hyoka_test: npt.DTypeLike = np.floor(
+print('--------------------------------------------------------------')
+
+hyoka_test = (test_transform[:count_file_validation])
+
+hyoka_test_calc: npt.DTypeLike = np.floor(
     hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
 
-print("Approximate value : {:.2f}".format(np.float64(hyoka_test)) + " in " +
-      test_dir + " folder.")
-# Approximate value : 0.76 in validation folder.
+print('hyoka_testの計算')
+
+print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))
+print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))
+print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))
+print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))
+print("最大値: {:.2f}".format(np.max(hyoka_test_calc)))
+
+print('--------------------------------------------------------------')
+
+# --------------------------------------------------------------
+# hyokaの計算
+# 平均値: 0.09
+# 中央値: 0.08
+# 標準偏差: 0.006
+# 最小値: 0.08
+# 最大値: 0.10
+# --------------------------------------------------------------
+# hyoka_testの計算
+# 平均値: 0.11
+# 中央値: 0.11
+# 標準偏差: 0.009
+# 最小値: 0.10
+# 最大値: 0.12
+# --------------------------------------------------------------
