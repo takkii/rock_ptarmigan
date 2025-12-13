@@ -3,7 +3,7 @@
 ```markdown
 # approximate.py
 
-② 近似値評価を検証していた途中経過。
+② 近似値評価、説明文を出力先に追記した拡張版。
 
 # if_approximate_mix.py
 
