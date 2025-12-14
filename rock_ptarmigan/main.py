@@ -76,17 +76,35 @@ def compare_all():
     train_transform = pca.inverse_transform(pca.transform(x_train_shape))
     test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-    count_file_train = (sum(os.path.isfile(os.path.join(IMP + TRF, name)) for name in os.listdir(IMP + TRF)))
-    count_file_validation = (sum(os.path.isfile(os.path.join(IMP + VAF, name)) for name in os.listdir(IMP + VAF)))
+    count_file_train = (sum(
+        os.path.isfile(os.path.join(str(IMP) + str(TRF), name))
+        for name in os.listdir(str(IMP) + str(TRF))))
+    count_file_validation = (sum(
+        os.path.isfile(os.path.join(str(IMP) + str(VAF), name))
+        for name in os.listdir(str(IMP) + str(VAF))))
 
-    result: npt.DTypeLike = np.floor(sum(train_transform) / 1000).astype(int) / (1000 * count_file_train)
-    test_result: npt.DTypeLike = np.floor(sum(test_transform) / 1000).astype(int) / (1000 * count_file_validation)
+    hyoka = (train_transform[:count_file_train])
+    hyoka_test = (test_transform[:count_file_validation])
 
-    print("Approximate value : {:.2f}".format(np.float64(result)) + " in " + train_dir + " folder.")
-    # Approximate value : 0.15 in train folder.
+    hyoka_calc: npt.DTypeLike = np.floor(
+        hyoka * 1000).astype(int) / (1000 * count_file_train)
 
-    print("Approximate value : {:.2f}".format(np.float64(test_result)) + " in " + test_dir + " folder.")
-    # Approximate value : 0.11 in validation folder.
+    hyoka_test_calc: npt.DTypeLike = np.floor(
+        hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
+
+    print('--------------------------------------------------------------')
+    print("平均値: {:.2f}".format(np.mean(hyoka_calc)))
+    print("中央値: {:.2f}".format(np.median(hyoka_calc)))
+    print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))
+    print("最小値: {:.2f}".format(np.min(hyoka_calc)))
+    print("最大値: {:.2f}".format(np.max(hyoka_calc)))
+    print('--------------------------------------------------------------')
+    print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))
+    print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))
+    print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))
+    print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))
+    print("最大値: {:.2f}".format(np.max(hyoka_test_calc)))
+    print('--------------------------------------------------------------')
 
 
 def compare_train():
@@ -127,11 +145,22 @@ def compare_train():
 
     train_transform = pca.inverse_transform(pca.transform(x_train_shape))
 
-    count_file_train = (sum(os.path.isfile(os.path.join(IMP + TRF, name)) for name in os.listdir(IMP + TRF)))
+    count_file_train = (sum(
+        os.path.isfile(os.path.join(str(IMP) + str(TRF), name))
+        for name in os.listdir(str(IMP) + str(TRF))))
 
-    result: npt.DTypeLike = np.floor(sum(train_transform) / 1000).astype(int) / (1000 * count_file_train)
+    hyoka = (train_transform[:count_file_train])
 
-    print("{:.2f}".format(np.float64(result)))  # 0.15
+    hyoka_calc: npt.DTypeLike = np.floor(
+        hyoka * 1000).astype(int) / (1000 * count_file_train)
+
+    print('--------------------------------------------------------------')
+    print("平均値: {:.2f}".format(np.mean(hyoka_calc)))
+    print("中央値: {:.2f}".format(np.median(hyoka_calc)))
+    print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))
+    print("最小値: {:.2f}".format(np.min(hyoka_calc)))
+    print("最大値: {:.2f}".format(np.max(hyoka_calc)))
+    print('--------------------------------------------------------------')
 
 
 def compare_validation():
@@ -168,8 +197,19 @@ def compare_validation():
 
     test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-    count_file_validation = (sum(os.path.isfile(os.path.join(IMP + VAF, name)) for name in os.listdir(IMP + VAF)))
+    count_file_validation = (sum(
+        os.path.isfile(os.path.join(str(IMP) + str(VAF), name))
+        for name in os.listdir(str(IMP) + str(VAF))))
 
-    test_result: npt.DTypeLike = np.floor(sum(test_transform) / 1000).astype(int) / (1000 * count_file_validation)
+    hyoka_test = (test_transform[:count_file_validation])
 
-    print("{:.2f}".format(np.float64(test_result)))  # 0.11
+    hyoka_test_calc: npt.DTypeLike = np.floor(
+        hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
+
+    print('--------------------------------------------------------------')
+    print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))
+    print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))
+    print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))
+    print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))
+    print("最大値: {:.2f}".format(np.max(hyoka_test_calc)))
+    print('--------------------------------------------------------------')
