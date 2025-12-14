@@ -81,7 +81,7 @@ count_file_validation = (sum(
 
 print('--------------------------------------------------------------')
 
-hyoka = (train_transform[:count_file_validation])
+hyoka = (train_transform[:count_file_train])
 
 hyoka_calc: npt.DTypeLike = np.floor(
     hyoka * 1000).astype(int) / (1000 * count_file_train)
