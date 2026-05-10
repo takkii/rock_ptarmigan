@@ -73,24 +73,27 @@ class iFace(threading.Thread):
 
         train_transform = pca.inverse_transform(pca.transform(x_train_shape))
 
-        count_file_train = (sum(
-            os.path.isfile(os.path.join(IMP + TRF, name))
-            for name in os.listdir(IMP + TRF)))
+        count_file_train = (
+            sum(
+                os.path.isfile(os.path.join(IMP + TRF, name))  # type: ignore
+                for name in os.listdir(IMP + TRF)))  # type: ignore
 
         result: npt.DTypeLike = np.floor(
             sum(train_transform) / 1000).astype(int) / (1000 *
                                                         count_file_train)
 
-        num_result = np.float64(result)
+        num_result = np.float64(result)  # type: ignore
         nat_str = str(NAT)
 
         print('Check, train data < ' + nat_str)
 
         if num_result < float(nat_str):
-            print("train data is {:.2f}".format(np.float64(result)))
+            print("train data is {:.2f}".format(
+                np.float64(result)))  # type: ignore
             pass
         else:
-            print("train data is {}".format(np.float64(result)))
+            print("train data is {}".format(
+                np.float64(result)))  # type: ignore
         # Check, train
         # data < 0.149
         # train data is 0.15016666666666667
