@@ -75,8 +75,11 @@ x_test = np.array(test_list)
 # # [[262][350][3]]
 # # [[262][350][3]]
 #
-# # train_test_split(*arrays, test_size=None, train_size=None, random_state=None, shuffle=True, stratify=None)
-# X_train, X_test, Y_train, Y_test = train_test_split(after_rgb_np, before_rgb_np, test_size=0.3)
+# # train_test_split(
+#             *arrays, test_size=None, train_size=None,
+#             random_state=None, shuffle=True, stratify=None)
+# X_train, X_test, Y_train, Y_test = train_test_split(
+#                                 after_rgb_np, before_rgb_np, test_size=0.3)
 
 # print('X_train')
 # print(X_train)
@@ -136,7 +139,9 @@ hyoka_2: npt.DTypeLike = np.floor(train_transform[2] * 1000).astype(int) / 1000
 hyoka_3: npt.DTypeLike = np.floor(train_transform[3] * 1000).astype(int) / 1000
 hyoka_4: npt.DTypeLike = np.floor(train_transform[4] * 1000).astype(int) / 1000
 hyoka_5: npt.DTypeLike = np.floor(train_transform[5] * 1000).astype(int) / 1000
-result = (hyoka_0 + hyoka_1 + hyoka_2 + hyoka_3 + hyoka_4 + hyoka_5) / 6
+result = (  # type: ignore
+    hyoka_0 + hyoka_1 + hyoka_2  # type: ignore
+    + hyoka_3 + hyoka_4 + hyoka_5) / 6  # type: ignore
 # print(train_transform[0])
 # print(train_transform[1])
 # print(train_transform[2])
@@ -166,8 +171,10 @@ hyoka_test_4: npt.DTypeLike = np.floor(
     test_transform[4] * 1000).astype(int) / 1000
 hyoka_test_5: npt.DTypeLike = np.floor(
     test_transform[5] * 1000).astype(int) / 1000
-test_result = (hyoka_test_0 + hyoka_test_1 + hyoka_test_2 + hyoka_test_3 +
-               hyoka_test_4 + hyoka_test_5) / 6
+test_result = (  # type: ignore
+    hyoka_test_0 + hyoka_test_1  # type: ignore
+    + hyoka_test_2 + hyoka_test_3  # type: ignore
+    + hyoka_test_4 + hyoka_test_5) / 6  # type: ignore
 # print(test_transform[0])
 # print(test_transform[1])
 # print(test_transform[2])
@@ -217,7 +224,10 @@ print("Approximate: {:.2f}".format(np.float64(test_result)))
 # print(study)
 # result = nmf.components_
 # result_np = np.floor(result * 1000, dtype=np.float64) / 1000
-# # DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+# # DeprecationWarning: Conversion of an array with ndim > 0
+# to a scalar is deprecated, and will error in future.
+# Ensure you extract a single element from your array
+# before performing this operation. (Deprecated NumPy 1.25.)
 # print(np.float64(result_np))  # Ans, 16.186 / 18.708 / 20.909
 
 # x_reconstructed_nmf = np.dot(nmf.transform(X_test), nmf.components_)
@@ -227,7 +237,8 @@ print("Approximate: {:.2f}".format(np.float64(test_result)))
 # Increase it to improve convergence.
 # warnings.warn(
 
-# Maximum number of iterations 200 | max_iter = 200, GitHub disccussion on no problem.
+# Maximum number of iterations 200 | max_iter = 200,
+# GitHub disccussion on no problem.
 
 # print('NMF')
 # print(x_reconstructed_nmf)  # [[350.]] / [[3.]]

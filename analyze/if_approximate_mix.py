@@ -88,12 +88,14 @@ class iFace(threading.Thread):
         train_transform = pca.inverse_transform(pca.transform(x_train_shape))
         test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-        count_file_train = (sum(
-            os.path.isfile(os.path.join(IMP + TRF, name))
-            for name in os.listdir(IMP + TRF)))
-        count_file_validation = (sum(
-            os.path.isfile(os.path.join(IMP + VAF, name))
-            for name in os.listdir(IMP + VAF)))
+        count_file_train = (
+            sum(
+                os.path.isfile(os.path.join(IMP + TRF, name))  # type: ignore
+                for name in os.listdir(IMP + TRF)))  # type: ignore
+        count_file_validation = (
+            sum(
+                os.path.isfile(os.path.join(IMP + VAF, name))  # type: ignore
+                for name in os.listdir(IMP + VAF)))  # type: ignore
 
         result: npt.DTypeLike = np.floor(
             sum(train_transform) / 1000).astype(int) / (1000 *
@@ -102,23 +104,25 @@ class iFace(threading.Thread):
             sum(test_transform) / 1000).astype(int) / (1000 *
                                                        count_file_validation)
 
-        num_result = np.float64(result)
-        num_test_result = np.float64(test_result)
+        num_result = np.float64(result)  # type: ignore
+        num_test_result = np.float64(test_result)  # type: ignore
 
-        if num_result > float(NAT):
+        if num_result > float(NAT):  # type: ignore
             print("train data is {:.2f}".format(np.float64(num_result)))
             # train data is 0.15
             pass
         else:
-            print("train data is {}".format(np.float64(result)))
+            print("train data is {}".format(
+                np.float64(result)))  # type: ignore
             # < train data is 0.15016666666666667
 
-        if num_test_result > float(NAE):
+        if num_test_result > float(NAE):  # type: ignore
             print("test data is {:.2f}".format(np.float64(num_test_result)))
             # test data is 0.11
             pass
         else:
-            print("test data is {}".format(np.float64(test_result)))
+            print("test data is {}".format(
+                np.float64(test_result)))  # type: ignore
             # < test data is 0.10542857142857143
 
 

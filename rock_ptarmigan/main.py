@@ -93,17 +93,17 @@ def compare_all():
         hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
 
     print('--------------------------------------------------------------')
-    print("平均値: {:.2f}".format(np.mean(hyoka_calc)))
-    print("中央値: {:.2f}".format(np.median(hyoka_calc)))
-    print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))
-    print("最小値: {:.2f}".format(np.min(hyoka_calc)))
-    print("最大値: {:.2f}".format(np.max(hyoka_calc)))
+    print("平均値: {:.2f}".format(np.mean(hyoka_calc)))    # type: ignore
+    print("中央値: {:.2f}".format(np.median(hyoka_calc)))    # type: ignore
+    print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))    # type: ignore
+    print("最小値: {:.2f}".format(np.min(hyoka_calc)))    # type: ignore
+    print("最大値: {:.2f}".format(np.max(hyoka_calc)))    # type: ignore
     print('--------------------------------------------------------------')
-    print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))
-    print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))
-    print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))
-    print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))
-    print("最大値: {:.2f}".format(np.max(hyoka_test_calc)))
+    print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))    # type: ignore
+    print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))    # type: ignore
+    print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))    # type: ignore
+    print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))    # type: ignore
+    print("最大値: {:.2f}".format(np.max(hyoka_test_calc)))    # type: ignore
     print('--------------------------------------------------------------')
 
 
@@ -155,11 +155,11 @@ def compare_train():
         hyoka * 1000).astype(int) / (1000 * count_file_train)
 
     print('--------------------------------------------------------------')
-    print("平均値: {:.2f}".format(np.mean(hyoka_calc)))
-    print("中央値: {:.2f}".format(np.median(hyoka_calc)))
-    print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))
-    print("最小値: {:.2f}".format(np.min(hyoka_calc)))
-    print("最大値: {:.2f}".format(np.max(hyoka_calc)))
+    print("平均値: {:.2f}".format(np.mean(hyoka_calc)))    # type: ignore
+    print("中央値: {:.2f}".format(np.median(hyoka_calc)))    # type: ignore
+    print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))    # type: ignore
+    print("最小値: {:.2f}".format(np.min(hyoka_calc)))    # type: ignore
+    print("最大値: {:.2f}".format(np.max(hyoka_calc)))    # type: ignore
     print('--------------------------------------------------------------')
 
 
@@ -207,9 +207,9 @@ def compare_validation():
         hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
 
     print('--------------------------------------------------------------')
-    print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))
-    print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))
-    print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))
-    print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))
-    print("最大値: {:.2f}".format(np.max(hyoka_test_calc)))
+    print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))    # type: ignore
+    print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))    # type: ignore
+    print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))    # type: ignore
+    print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))    # type: ignore
+    print("最大値: {:.2f}".format(np.max(hyoka_test_calc)))    # type: ignore
     print('--------------------------------------------------------------')

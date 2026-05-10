@@ -68,23 +68,26 @@ class iFace(threading.Thread):
 
         test_transform = pca.inverse_transform(pca.transform(x_test_shape))
 
-        count_file_validation = (sum(
-            os.path.isfile(os.path.join(IMP + VAF, name))
-            for name in os.listdir(IMP + VAF)))
+        count_file_validation = (
+            sum(
+                os.path.isfile(os.path.join(IMP + VAF, name))  # type: ignore
+                for name in os.listdir(IMP + VAF)))  # type: ignore
 
         test_result: npt.DTypeLike = np.floor(
             sum(test_transform) / 1000).astype(int) / (1000 *
                                                        count_file_validation)
 
-        num_result = np.float64(test_result)
+        num_result = np.float64(test_result)  # type: ignore
 
-        print('Check, train data < ' + NAE)
+        print('Check, train data < ' + NAE)  # type: ignore
 
-        if num_result < float(NAE):
-            print("test data is {:.2f}".format(np.float64(test_result)))
+        if num_result < float(NAE):  # type: ignore
+            print("test data is {:.2f}".format(
+                np.float64(test_result)))  # type: ignore
             pass
         else:
-            print("test data is {}".format(np.float64(test_result)))
+            print("test data is {}".format(
+                np.float64(test_result)))  # type: ignore
         # Check, train
         # data < 0.10
         # test data is 0.10542857142857143

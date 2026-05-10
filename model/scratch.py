@@ -19,7 +19,8 @@ train_dir = 'train'
 file_type = 'gif'
 
 train_list_path = glob.glob('../images/' + train_dir + '/*.' + file_type)
-# validation_list_path = glob.glob('../images/' + train_dir + '/*.' + file_type)
+# validation_list_path = glob.glob(
+#                        '../images/' + train_dir + '/*.' + file_type)
 
 train_list = []
 # validation_list = []
@@ -657,16 +658,25 @@ x_train = np.array(train_list)
 model = keras.Sequential(
     [
         keras.Input(shape=after_rgb_sh),
-        layers.Conv2D(32, 5, name='Layer_0', strides=2, activation="relu", trainable=False),
-        layers.Conv2D(32, 3, name='Layer_1', activation="relu", trainable=False),
-        layers.Conv2D(32, 3, name='Layer_2', activation="relu", trainable=False),
+        layers.Conv2D(
+                      32, 5, name='Layer_0',
+                      strides=2, activation="relu", trainable=False),
+        layers.Conv2D(
+                      32, 3, name='Layer_1',
+                      activation="relu", trainable=False),
+        layers.Conv2D(
+                      32, 3, name='Layer_2',
+                      activation="relu", trainable=False),
     ]
 )
 
 base_learning_rate = 0.0001
-model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=base_learning_rate),
+model.compile(
+              optimizer=tf.keras.optimizers.Adam(
+                            learning_rate=base_learning_rate),
               loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
-              metrics=[tf.keras.metrics.BinaryAccuracy(threshold=0, name='accuracy')])
+              metrics=[tf.keras.metrics.BinaryAccuracy(
+                            threshold=0, name='accuracy')])
 
 feature_extractor = keras.Model(
     inputs=model.inputs,

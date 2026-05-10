@@ -4,8 +4,12 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 
-# 2025-11-21 07:53:50.287100: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-# To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+# 2025-11-21 07:53:50.287100:
+# I tensorflow/core/platform/cpu_feature_guard.cc:210]
+# This TensorFlow binary is optimized to use available CPU instructions
+# in performance-critical operations.
+# To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA,
+# in other operations, rebuild TensorFlow with the appropriate compiler flags.
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # train data
@@ -96,7 +100,8 @@ after_rgb_sh = after_rgb.shape  # (262, 350, 3)
 #     [
 #         keras.Input(shape=before_rgb.shape),
 #         layers.Conv2D(32, 5, strides=2, activation="relu"),
-#         layers.Conv2D(32, 3, activation="relu", name="my_intermediate_layer"),
+#         layers.Conv2D(32, 3, activation="relu",
+#         name="my_intermediate_layer"),
 #         layers.Conv2D(32, 3, activation="relu"),
 #     ]
 # )
@@ -218,9 +223,15 @@ after_rgb_sh = after_rgb.shape  # (262, 350, 3)
 model = keras.Sequential(
     [
         keras.Input(shape=after_rgb_sh),
-        layers.Conv2D(32, 5, name='Layer_0', strides=2, activation="relu", trainable=False),
-        layers.Conv2D(32, 3, name='Layer_1', activation="relu", trainable=False),
-        layers.Conv2D(32, 3, name='Layer_2', activation="relu", trainable=False),
+        layers.Conv2D(
+                      32, 5, name='Layer_0',
+                      strides=2, activation="relu", trainable=False),
+        layers.Conv2D(
+                      32, 3, name='Layer_1',
+                      activation="relu", trainable=False),
+        layers.Conv2D(
+                      32, 3, name='Layer_2',
+                      activation="relu", trainable=False),
     ]
 )
 
