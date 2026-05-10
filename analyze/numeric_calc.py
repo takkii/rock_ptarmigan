@@ -1,15 +1,14 @@
 import glob
 import os
 import warnings
-
-import cv2
-import numpy as np
-import numpy.typing as npt
-
-from dotenv import load_dotenv
-from keras.preprocessing.image import load_img, img_to_array
 from os.path import dirname, join
-from sklearn.decomposition import PCA
+
+import cv2                                    # type: ignore
+import numpy as np                            # type: ignore
+import numpy.typing as npt                    # type: ignore
+from dotenv import load_dotenv                # type: ignore
+from keras.preprocessing.image import load_img, img_to_array     # type: ignore
+from sklearn.decomposition import PCA                            # type: ignore
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 warnings.simplefilter('ignore', DeprecationWarning)
