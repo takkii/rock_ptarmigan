@@ -5,9 +5,7 @@ from .main import compare_train
 from .main import compare_validation
 
 # function call
-__all__ = ['compare_all']
-__all__ = ['compare_train']
-__all__ = ['compare_validation']
+__all__ = ['compare_all', 'compare_train', 'compare_validation']
 
 # version
-__version__ = version(__package__)
+__version__ = version(__package__)      # type: ignore
