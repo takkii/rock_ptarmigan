@@ -1,6 +1,13 @@
-images/*
+# Ignore, IDE.
 .idea/*
+
+# Ignore, build.
 build/*
 dist/*
 rock_ptarmigan.egg-info/*
+
+# Ignore, Image.
+images/*
+
+# Ignore, complete file.
 rock_ptarmigan/__pycache__/*

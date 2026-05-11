@@ -1,8 +1,10 @@
-import cv2
+import cv2                               # type: ignore
 import os
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
+import tensorflow as tf                  # type: ignore
+from tensorflow import keras             # type: ignore
+from tensorflow.keras import layers      # type: ignore
+
+__all__ = ['cv2']
 
 # 2025-11-21 07:53:50.287100:
 # I tensorflow/core/platform/cpu_feature_guard.cc:210]

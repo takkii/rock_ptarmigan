@@ -1,12 +1,14 @@
 import glob
 import os
 
-import cv2
-import numpy as np
-import tensorflow as tf
-from keras.preprocessing.image import load_img, img_to_array
-from tensorflow import keras
-from tensorflow.keras import layers
+import cv2                                                       # type: ignore
+import numpy as np                                               # type: ignore
+import tensorflow as tf                                          # type: ignore
+from keras.preprocessing.image import load_img, img_to_array     # type: ignore
+from tensorflow import keras                                     # type: ignore
+from tensorflow.keras import layers                              # type: ignore
+
+__all__ = ['cv2']
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 

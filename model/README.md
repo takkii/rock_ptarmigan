@@ -1,11 +1,13 @@
-> coin.py
+### tensorflow/keras、モデルの検証。
 
-③ tensorflow/kerasで写真を評価
+> tensorflow_num.py
 
-> model.py
+### tensorflow/keras、モデルの検証、コメント削除版。
 
-① 全体的なモデルの検証途中、コード片。
+> tensorflow_nump.py
 
-> scratch.py
+### tensorflow/keras、顔写真を評価。
 
-② model.pyのコメントをなるべく削減していたコード片。
+> keras_num.py
+
+更新履歴: 2026/05/11🔄
