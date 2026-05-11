@@ -85,13 +85,13 @@ hyoka = (train_transform[:count_file_train])
 hyoka_calc: npt.DTypeLike = np.floor(
     hyoka * 1000).astype(int) / (1000 * count_file_train)
 
-print('hyokaの計算')
+print('Calculation of hyoka')
 
-print("平均値: {:.2f}".format(np.mean(hyoka_calc)))  # type: ignore
-print("中央値: {:.2f}".format(np.median(hyoka_calc)))  # type: ignore
-print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))  # type: ignore
-print("最小値: {:.2f}".format(np.min(hyoka_calc)))  # type: ignore
-print("最大値: {:.2f}".format(np.max(hyoka_calc)))  # type: ignore
+print("Mean: {:.2f}".format(np.mean(hyoka_calc)))      # type: ignore
+print("Median: {:.2f}".format(np.median(hyoka_calc)))  # type: ignore
+print("STDEV: {:.3f}".format(np.std(hyoka_calc)))      # type: ignore
+print("Minimum: {:.2f}".format(np.min(hyoka_calc)))    # type: ignore
+print("Maximum: {:.2f}".format(np.max(hyoka_calc)))    # type: ignore
 
 print('--------------------------------------------------------------')
 
@@ -100,29 +100,28 @@ hyoka_test = (test_transform[:count_file_validation])
 hyoka_test_calc: npt.DTypeLike = np.floor(
     hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
 
-print('hyoka_testの計算')
+print('Calculation of hyoka_test')
 
-print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))  # type: ignore
-print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))  # type: ignore
-print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))  # type: ignore
-print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))  # type: ignore
-print("最大値: {:.2f}".format(
-    np.max(hyoka_test_calc)))  # type: ignore    # type: ignore
+print("Mean: {:.2f}".format(np.mean(hyoka_test_calc)))      # type: ignore
+print("Median: {:.2f}".format(np.median(hyoka_test_calc)))  # type: ignore
+print("STDEV: {:.3f}".format(np.std(hyoka_test_calc)))      # type: ignore
+print("Minimum: {:.2f}".format(np.min(hyoka_test_calc)))    # type: ignore
+print("Maximum: {:.2f}".format(np.max(hyoka_test_calc)))    # type: ignore
 
 print('--------------------------------------------------------------')
 
 # --------------------------------------------------------------
-# hyokaの計算
-# 平均値: 0.09
-# 中央値: 0.08
-# 標準偏差: 0.006
-# 最小値: 0.08
-# 最大値: 0.10
+# Calculation of hyoka
+# Mean: 0.09
+# Median: 0.09
+# STDEV: 0.005
+# Minimum: 0.08
+# Maximum: 0.10
 # --------------------------------------------------------------
-# hyoka_testの計算
-# 平均値: 0.11
-# 中央値: 0.11
-# 標準偏差: 0.009
-# 最小値: 0.10
-# 最大値: 0.12
+# Calculation of hyoka_test
+# Mean: 0.11
+# Median: 0.11
+# STDEV: 0.009
+# Minimum: 0.10
+# Maximum: 0.12
 # --------------------------------------------------------------
