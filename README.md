@@ -10,7 +10,7 @@
 <div align="center">
   <p><h2>rock_ptarmigan.</h2></p>
   <p><h4><ins>purpose, Approximate value evaluation.</ins></h4></p>
-  <p><h5>Wiki is <a href="https://github.com/takkii/rock_ptarmigan/tree/main/wiki">here</a>.</h5></p>
+  <p><h4>PCA analyze, in keras and scikit-learn. How to Use, Wiki is <a href="https://github.com/takkii/rock_ptarmigan/tree/main/wiki">here</a>.</h4></p>
 </div>
 
 <hr />
