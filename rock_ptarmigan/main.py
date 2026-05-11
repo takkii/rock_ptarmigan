@@ -3,12 +3,12 @@ import os
 import warnings
 from os.path import dirname, join
 
-import cv2                          # type: ignore
-import numpy as np                  # type: ignore
-import numpy.typing as npt          # type: ignore
-from dotenv import load_dotenv      # type: ignore
-from keras.preprocessing.image import load_img, img_to_array     # type: ignore
-from sklearn.decomposition import PCA                            # type: ignore
+import cv2                        # type: ignore
+import numpy as np                # type: ignore
+import numpy.typing as npt        # type: ignore
+from dotenv import load_dotenv    # type: ignore
+from keras.preprocessing.image import load_img, img_to_array   # type: ignore
+from sklearn.decomposition import PCA                          # type: ignore
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 warnings.simplefilter('ignore', DeprecationWarning)
@@ -93,17 +93,17 @@ def compare_all():
         hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
 
     print('--------------------------------------------------------------')
-    print("平均値: {:.2f}".format(np.mean(hyoka_calc)))      # type: ignore
-    print("中央値: {:.2f}".format(np.median(hyoka_calc)))    # type: ignore
-    print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))     # type: ignore
-    print("最小値: {:.2f}".format(np.min(hyoka_calc)))       # type: ignore
-    print("最大値: {:.2f}".format(np.max(hyoka_calc)))       # type: ignore
+    print("Mean: {:.2f}".format(np.mean(hyoka_calc)))      # type: ignore
+    print("Median: {:.2f}".format(np.median(hyoka_calc)))  # type: ignore
+    print("STDEV: {:.3f}".format(np.std(hyoka_calc)))      # type: ignore
+    print("Minimum: {:.2f}".format(np.min(hyoka_calc)))    # type: ignore
+    print("Maximum: {:.2f}".format(np.max(hyoka_calc)))    # type: ignore
     print('--------------------------------------------------------------')
-    print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))     # type: ignore
-    print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))   # type: ignore
-    print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))    # type: ignore
-    print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))      # type: ignore
-    print("最大値: {:.2f}".format(np.max(hyoka_test_calc)))      # type: ignore
+    print("Mean: {:.2f}".format(np.mean(hyoka_test_calc)))      # type: ignore
+    print("Median: {:.2f}".format(np.median(hyoka_test_calc)))  # type: ignore
+    print("STDEV: {:.3f}".format(np.std(hyoka_test_calc)))      # type: ignore
+    print("Minimum: {:.2f}".format(np.min(hyoka_test_calc)))    # type: ignore
+    print("Maximum: {:.2f}".format(np.max(hyoka_test_calc)))    # type: ignore
     print('--------------------------------------------------------------')
 
 
@@ -155,11 +155,11 @@ def compare_train():
         hyoka * 1000).astype(int) / (1000 * count_file_train)
 
     print('--------------------------------------------------------------')
-    print("平均値: {:.2f}".format(np.mean(hyoka_calc)))     # type: ignore
-    print("中央値: {:.2f}".format(np.median(hyoka_calc)))   # type: ignore
-    print("標準偏差: {:.3f}".format(np.std(hyoka_calc)))    # type: ignore
-    print("最小値: {:.2f}".format(np.min(hyoka_calc)))      # type: ignore
-    print("最大値: {:.2f}".format(np.max(hyoka_calc)))      # type: ignore
+    print("Mean: {:.2f}".format(np.mean(hyoka_calc)))      # type: ignore
+    print("Median: {:.2f}".format(np.median(hyoka_calc)))  # type: ignore
+    print("STDEV: {:.3f}".format(np.std(hyoka_calc)))      # type: ignore
+    print("Minimum: {:.2f}".format(np.min(hyoka_calc)))    # type: ignore
+    print("Maximum: {:.2f}".format(np.max(hyoka_calc)))    # type: ignore
     print('--------------------------------------------------------------')
 
 
@@ -207,9 +207,9 @@ def compare_validation():
         hyoka_test * 1000).astype(int) / (1000 * count_file_validation)
 
     print('--------------------------------------------------------------')
-    print("平均値: {:.2f}".format(np.mean(hyoka_test_calc)))    # type: ignore
-    print("中央値: {:.2f}".format(np.median(hyoka_test_calc)))  # type: ignore
-    print("標準偏差: {:.3f}".format(np.std(hyoka_test_calc)))   # type: ignore
-    print("最小値: {:.2f}".format(np.min(hyoka_test_calc)))     # type: ignore
-    print("最大値: {:.2f}".format(np.max(hyoka_test_calc)))     # type: ignore
+    print("Mean: {:.2f}".format(np.mean(hyoka_test_calc)))      # type: ignore
+    print("Median: {:.2f}".format(np.median(hyoka_test_calc)))  # type: ignore
+    print("STDEV: {:.3f}".format(np.std(hyoka_test_calc)))      # type: ignore
+    print("Minimum: {:.2f}".format(np.min(hyoka_test_calc)))    # type: ignore
+    print("Maximum: {:.2f}".format(np.max(hyoka_test_calc)))    # type: ignore
     print('--------------------------------------------------------------')
